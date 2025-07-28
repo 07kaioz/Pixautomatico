@@ -1,18 +1,19 @@
-// script.js
-document.getElementById('pixForm').addEventListener('submit', async (e) => {
+let saldo = 0.01;
+
+document.getElementById('pixForm').addEventListener('submit', (e) => {
   e.preventDefault();
 
   const chave = document.getElementById('chave').value;
-  const valor = document.getElementById('valor').value;
+  const valor = parseFloat(document.getElementById('valor').value);
 
-  const resposta = await fetch('http://localhost:3000/enviar-pix', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ chave, valor })
-  });
+  if (valor > saldo) {
+    document.getElementById('resposta').innerText =
+      'Erro: Saldo insuficiente para enviar esse valor.';
+    return;
+  }
 
-  const resultado = await resposta.json();
-  document.getElementById('resposta').innerText = resultado.mensagem;
+  saldo -= valor;
+  document.getElementById('saldo').innerText = `R$ ${saldo.toFixed(2)}`;
+  document.getElementById('resposta').innerText =
+    `Pix de R$ ${valor.toFixed(2)} enviado para: ${chave}`;
 });
