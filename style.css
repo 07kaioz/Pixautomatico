@@ -50,3 +50,8 @@ button:hover {
   text-align: center;
   color: #333;
 }
+
+#saldo {
+  color: green;
+  font-weight: bold;
+}
