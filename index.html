@@ -3,20 +3,21 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Pix Automático</title>
+  <title>Pix Simulado</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h1>Receber Pix Automático</h1>
+    <h2>Saldo da sua conta: <span id="saldo">R$ 0,01</span></h2>
+    <h1>Simulador de Pix</h1>
     <form id="pixForm">
-      <label for="chave">Sua chave Pix:</label>
+      <label for="chave">Chave Pix:</label>
       <input type="text" id="chave" required />
 
       <label for="valor">Valor (R$):</label>
-      <input type="number" id="valor" required />
+      <input type="number" id="valor" step="0.01" max="0.01" required />
 
-      <button type="submit">Receber Pix</button>
+      <button type="submit">Enviar Pix</button>
     </form>
     <p id="resposta"></p>
   </div>
